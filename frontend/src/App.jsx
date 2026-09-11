@@ -8,7 +8,7 @@ function App() {
 
   // 1. WebSocket Connection
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8000/ws')
+    const ws = new WebSocket('wss://outcognito-mode.onrender.com')
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data)
@@ -51,7 +51,7 @@ function App() {
       const lastSite = feed.length > 0 ? feed[0] : { title: "Nothing", url: "Empty History" }
 
       try {
-        await fetch('http://localhost:8000/panic', { 
+        await fetch('https://outcognito-mode.onrender.com/panic', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: lastSite.url, title: lastSite.title })

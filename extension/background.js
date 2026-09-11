@@ -5,7 +5,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     console.log("Snitching on:", tab.url);
 
     // Send the URL to the FastAPI backend
-    fetch('http://localhost:8000/track', {
+    fetch('https://outcognito-mode.onrender.com/track', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
