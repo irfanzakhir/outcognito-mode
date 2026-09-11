@@ -51,7 +51,7 @@ function App() {
       const lastSite = feed.length > 0 ? feed[0] : { title: "Nothing", url: "Empty History" }
 
       try {
-        await fetch('https://outcognito-mode.onrender.com/ws/panic', { 
+        await fetch('https://outcognito-mode.onrender.com/panic', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url: lastSite.url, title: lastSite.title })
