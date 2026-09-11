@@ -36,8 +36,7 @@ For Software:
 # Installation
 ```bash
 # Clone the repository
-git clone [\[https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git\](https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git)](https://github.com/irfanzakhir/outcognito-mode.git)
-
+git clone [\[https://github.com/irfanzakhir/outcognito-mode.git\]
 # Setup Backend Environment
 cd backend
 python -m venv venv
