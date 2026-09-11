@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react'
 function App() {
   const [feed, setFeed] = useState([])
   const [totalShame, setTotalShame] = useState(0)
-  const [panicMessage, setPanicMessage] = useState('')
   const [isShaking, setIsShaking] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
+  // 1. WebSocket Connection
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:8000/ws')
 
@@ -18,24 +19,37 @@ function App() {
     return () => ws.close()
   }, [])
 
+  // 2. Escape Key Listener for the Modal
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setShowModal(false)
+      }
+    }
+
+    // Only attach the listener if the modal is currently open
+    if (showModal) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+
+    // Cleanup listener when modal closes
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [showModal])
+
   const handlePanic = async () => {
     if (totalShame > 0) {
-      // 1. Play the local MP3 file
       const audio = new Audio('/gotcha.mp3')
       audio.play().catch(err => console.error("Audio blocked by browser:", err))
       
-      // 2. Trigger the screen shake animation for 500ms
       setIsShaking(true)
       setTimeout(() => setIsShaking(false), 500)
 
-      // 3. Double the shame and show the error
       setTotalShame((prev) => prev * 2)
-      setPanicMessage('ERROR: History is immutable. Shame Doubled. HOD Notified.')
+      setShowModal(true) 
+      // The setTimeout that automatically closed the modal was removed from here
       
-      // Grab the most recent site they were looking at (index 0)
       const lastSite = feed.length > 0 ? feed[0] : { title: "Nothing", url: "Empty History" }
 
-      // Send that exact site to the backend to include in the HOD email
       try {
         await fetch('http://localhost:8000/panic', { 
           method: 'POST',
@@ -45,11 +59,6 @@ function App() {
       } catch (err) {
         console.error("Failed to trigger panic email", err)
       }
-
-      // Hide the message after 3 seconds
-      setTimeout(() => {
-        setPanicMessage('')
-      }, 3000)
     }
   }
 
@@ -59,10 +68,8 @@ function App() {
   if (totalShame > 500) subtitle = "Preparing to email browsing history to your HOD..."
 
   return (
-    // We add the dynamic 'shake-animation' class based on the isShaking state
-    <div className={`min-h-screen bg-gray-950 text-gray-100 p-8 font-mono ${isShaking ? 'shake-animation' : ''}`}>
+    <div className={`min-h-screen bg-gray-950 text-gray-100 p-8 font-mono relative ${isShaking ? 'shake-animation' : ''}`}>
       
-      {/* Injecting a quick CSS keyframe for the screen shake directly into the component */}
       <style>{`
         .shake-animation {
           animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
@@ -75,6 +82,23 @@ function App() {
           40%, 60% { transform: translate3d(15px, 0, 0); }
         }
       `}</style>
+
+      {/* THE NEW FULL-SCREEN POPUP MODAL */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md">
+          <div className="bg-gray-950 border-4 border-red-600 p-12 rounded-xl text-center shadow-[0_0_150px_rgba(220,38,38,0.8)] animate-pulse">
+            <h1 className="text-7xl font-black text-red-600 mb-6 tracking-widest uppercase drop-shadow-lg">
+              ACCESS DENIED
+            </h1>
+            <p className="text-4xl text-red-400 font-bold">
+              mail sent to HoD, now you are cooked..!
+            </p>
+          </div>
+          <p className="text-gray-600 mt-8 animate-bounce font-bold tracking-widest uppercase">
+            [ Press ESC to accept your fate ]
+          </p>
+        </div>
+      )}
 
       <header className="mb-10 flex items-center justify-between border-b border-gray-800 pb-6">
         <div>
@@ -151,12 +175,6 @@ function App() {
             >
               CLEAR HISTORY
             </button>
-
-            {panicMessage && (
-              <p className="mt-4 text-sm font-bold text-red-500 animate-bounce">
-                {panicMessage}
-              </p>
-            )}
           </div>
         </aside>
       </div>
