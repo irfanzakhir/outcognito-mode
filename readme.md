@@ -7,8 +7,8 @@
 
 ### Team Members
 - Team Lead: Irfan Zakhir - Mar Baselios Christian College of Engineering and Technology
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 2:  Nasif Shaji -  Mar Baselios Christian College of Engineering and Technology
+
 
 ### Project Description
 Outcognito is a highly intrusive, sarcastic browser extension and real-time dashboard that monitors your web traffic, publicly broadcasts your procrastination, and relentlessly bullies you for not focusing on your assignments. 
@@ -29,15 +29,14 @@ For Software:
 
 For Hardware:
 - N/A
-- N/A
-- N/A
+
 
 ### Implementation
 For Software:
 # Installation
 ```bash
 # Clone the repository
-git clone [https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git](https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git)
+git clone [\[https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git\](https://github.com/YOUR_GITHUB_USERNAME/outcognito-mode.git)](https://github.com/irfanzakhir/outcognito-mode.git)
 
 # Setup Backend Environment
 cd backend

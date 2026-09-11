@@ -6,6 +6,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+import os
+
 
 app = FastAPI()
 
@@ -36,7 +38,7 @@ def generate_snark(domain, title):
 
 def send_hod_email(target_title, target_url):
     sender_email = "6234@mbcpeermade.com" 
-    sender_password = "itab kyiz avsi bspr" # Insert your generated App Password here
+    sender_password = os.environ.get("EMAIL_PASSWORD") # Insert your generated App Password here
     receiver_email = "irfanzakheer@gmail.com"
 
     msg = MIMEMultipart()
