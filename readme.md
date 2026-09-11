@@ -74,14 +74,13 @@ Project Documentation
 For Software:
 
 Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-The Live Global Browsing Feed updating via WebSockets.
+[![Screenshot1](https://github.com/irfanzakhir/outcognito-mode/blob/main/pic1.png)
 
-![Screenshot2](Add screenshot 2 here with proper name)
-The sarcastic AI judgments judging a user for visiting Reddit.
+![Screenshot2](https://github.com/irfanzakhir/outcognito-mode/blob/main/pic2.png)
 
-![Screenshot3](Add screenshot 3 here with proper name)
-The "ACCESS DENIED" screen shake and modal after hitting the panic button.
+![Screenshot3](https://github.com/irfanzakhir/outcognito-mode/blob/main/pic3.png)
+
+![Screenshot4](https://github.com/irfanzakhir/outcognito-mode/blob/main/pic4.png)
 
 Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
