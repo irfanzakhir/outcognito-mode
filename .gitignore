@@ -1,0 +1,12 @@
+# Python / FastAPI
+backend/venv/
+__pycache__/
+*.pyc
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# System / OS Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Outcognito Mode",
+  "version": "1.0",
+  "description": "Publicly broadcasts every URL you visit.",
+  "permissions": ["tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
