@@ -48,9 +48,10 @@ pip install fastapi uvicorn websockets
 # Setup Frontend Environment
 cd ../frontend
 npm install
+```
 
 Run
-
+```bash
 Bash
 # Terminal 1: Run the Backend
 cd backend
@@ -60,6 +61,7 @@ uvicorn main:app --reload
 # Terminal 2: Run the Frontend
 cd frontend
 npm run dev
+```
 
 To run the Extension:
 
