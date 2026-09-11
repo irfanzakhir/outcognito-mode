@@ -83,27 +83,37 @@ Screenshots (Add at least 3)
 ![Screenshot4](https://github.com/irfanzakhir/outcognito-mode/blob/main/pic4.png)
 
 Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-How the Service Worker POSTs to FastAPI, broadcasts to React via WebSockets, and triggers the SMTP email.
+# Diagrams
 
-For Hardware:
+```mermaid
+graph TD
+    subgraph Target Environment
+        T[Target User] -- Browses Web --> B[Browser Tab]
+        B -- Tab Update Event --> E[Chrome Extension<br>background.js]
+        E -- Filters Valid HTTP/S --> E
+    end
 
-Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-N/A
+    subgraph Backend Configuration
+        E -- POST /track<br>JSON Payload --> FA[FastAPI Server<br>main.py]
+        FA -- Logic Check --> SP{Calculate Shame Points<br>& Generate Snark}
+        SP -- Processed Data --> WS[WebSocket Broadcaster]
+        SP -- Boss Mode Trigger<br>9AM-4PM + 50pts --> BT[Background Task Queue]
+    end
 
-![Schematic](Add your schematic diagram here)
-N/A
+    subgraph Live Dashboard Environment
+        WS -- ws:// connection --> R[React Frontend<br>App.jsx]
+        R -- State Update --> LF[Live Global Feed]
+        T -- Panics & Clicks --> CB[CLEAR HISTORY Button]
+        CB -- Triggers Local FX --> FX[Gotcha Audio + Screen Shake<br>+ Access Denied Modal]
+        CB -- POST /panic<br>Last URL --> FA
+        FA -- Receives Panic --> BT
+    end
 
-Build Photos
-![Components](Add photo of your components here)
-N/A
-
-![Build](Add photos of build process here)
-N/A
-
-![Final](Add photo of final product here)
-N/A
+    subgraph External Infrastructure
+        BT -- smtplib / TLS --> G[Gmail SMTP Server<br>Port 587]
+        G -- Delivers Alert --> H[HOD Inbox<br>irfanzakheer@gmail.com]
+    end
+```
 
 Project Demo
 Video
