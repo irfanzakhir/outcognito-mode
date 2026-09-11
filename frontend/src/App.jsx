@@ -8,7 +8,7 @@ function App() {
 
   // 1. WebSocket Connection
   useEffect(() => {
-    const ws = new WebSocket('wss://outcognito-mode.onrender.com/ws')
+    const ws = new WebSocket('wss://[outcognito-mode.onrender.com/ws](https://outcognito-mode.onrender.com/ws)')
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data)
