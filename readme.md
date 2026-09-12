@@ -116,17 +116,11 @@ graph TD
 
 Project Demo
 Video
-[Add your demo video link here]
-A live demonstration of the extension catching procrastination, updating the React dashboard, and the HOD email being triggered by the fake panic button.
-
-Additional Demos
-[Add any extra demo materials/links]
+https://github.com/irfanzakhir/outcognito-mode/blob/main/vid1%20(1).mp4
 
 Team Contributions
 Irfan Zakhir: Built the FastAPI WebSocket server, Manifest V3 Chrome Extension, React/Tailwind frontend, and SMTP HOD email integration.
 
-[Name 2]: [Specific contributions]
-
-[Name 3]: [Specific contributions]
+Nasif Shaji: designed ui 
 
 Made with ❤️ at TinkerHub Useless Projects
