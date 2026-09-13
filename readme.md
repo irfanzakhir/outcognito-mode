@@ -110,7 +110,7 @@ graph TD
 
     subgraph External Infrastructure
         BT -- smtplib / TLS --> G[Gmail SMTP Server<br>Port 587]
-        G -- Delivers Alert --> H[HOD Inbox<br>irfanzakheer@gmail.com]
+        G -- Delivers Alert --> H[HOD Inbox<br>ixxxxxxxxxxxr@gmail.com]
     end
 ```
 
